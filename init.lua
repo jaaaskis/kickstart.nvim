@@ -179,6 +179,16 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+local function OpenTermWithPowershell()
+  vim.cmd 'split | terminal pwsh'
+end
+-- for windows machine open terminal with powershell
+vim.keymap.set('n', '<leader>tp', OpenTermWithPowershell, {
+  desc = '[T]erminal Open [P]owershell',
+  noremap = true,
+  silent = true,
+})
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -274,6 +284,20 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+  },
+  -- Git tooling
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      -- Only one of these is needed.
+      'nvim-telescope/telescope.nvim', -- optional
+      -- "ibhagwan/fzf-lua",              -- optional
+      -- "echasnovski/mini.pick",         -- optional
+    },
+    config = true,
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -777,7 +801,9 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
+        csharp = { 'clang' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
         css = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
@@ -944,6 +970,9 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
+      require('mini.icons').setup()
+      require('mini.move').setup()
+      require('mini.pairs').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -962,6 +991,15 @@ require('lazy').setup({
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
+    end,
+  },
+  -- Display latest package version in package.json
+  {
+    'vuki656/package-info.nvim',
+    event = 'BufRead package.json',
+    dependencies = { 'MunifTanjim/nui.nvim' },
+    config = function()
+      require('package-info').setup()
     end,
   },
   { -- Highlight, edit, and navigate code
