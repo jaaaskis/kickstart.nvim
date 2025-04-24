@@ -2,11 +2,6 @@ return {
   -- lazy.nvim
   'folke/snacks.nvim',
   opts = {
-    picker = {
-      -- your picker configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
     indent = {
       animate = {
         enabled = false,
@@ -14,6 +9,12 @@ return {
       -- your indent configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
+    },
+    dashboard = {
+      -- your dashboard configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      sections = { section = 'keys', gap = 1, padding = 1 },
     },
   },
 }

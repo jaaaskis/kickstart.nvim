@@ -456,7 +456,6 @@ require('lazy').setup({
           single_file_support = false,
           settings = {},
         },
-        csharp_ls = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -472,6 +471,10 @@ require('lazy').setup({
           },
         },
       }
+
+      if vim.fn.executable 'dotnet' == 1 then
+        servers.csharp_ls = {}
+      end
 
       -- Ensure the servers and tools above are installed
       --
