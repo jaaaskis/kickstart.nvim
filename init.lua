@@ -456,7 +456,7 @@ require('lazy').setup({
           single_file_support = false,
           settings = {},
         },
-        omnisharp = {},
+        csharp_ls = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
