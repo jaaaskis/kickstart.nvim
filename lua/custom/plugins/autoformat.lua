@@ -30,23 +30,10 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      csharp = function()
-        if vim.fn.executable 'dotnet' == 1 then
-          return { 'csharpier' }
-        else
-          return {}
-        end
-      end,
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
       css = { 'prettierd', 'prettier', stop_after_first = true },
       html = { 'prettierd', 'prettier', stop_after_first = true },
-      xml = { 'xmlformatter' },
-    },
-    formatters = {
-      xmlformatter = {
-        prepend_args = { '--blanks', '--selfclose' },
-      },
     },
   },
 }

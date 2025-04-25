@@ -472,10 +472,6 @@ require('lazy').setup({
         },
       }
 
-      if vim.fn.executable 'dotnet' == 1 then
-        servers.csharp_ls = {}
-      end
-
       -- Ensure the servers and tools above are installed
       --
       -- To check the current status of installed tools and/or manually install
