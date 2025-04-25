@@ -35,6 +35,13 @@ return {
       additional_vim_regex_highlighting = { 'ruby' },
     },
     indent = { enable = true, disable = { 'ruby' } },
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {}, -- No keymaps needed if using mini.ai
+      },
+    },
   },
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:
