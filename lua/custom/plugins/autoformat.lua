@@ -30,10 +30,12 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      json = { 'prettierd', 'prettier', stop_after_first = true },
-      css = { 'prettierd', 'prettier', stop_after_first = true },
-      html = { 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'dprint' },
+      typescript = { 'dprint' },
+      json = { 'dprint' },
+      css = { 'dprint' },
+      html = { 'dprint' },
+      markdown = { 'mdformat' },
     },
   },
 }
